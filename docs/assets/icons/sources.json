@@ -1,0 +1,46 @@
+{
+  "repository": "https://github.com/devicons/devicon",
+  "commit": "7330accdbc47e2dc0c19789a48533c4a3c50fe58",
+  "icons": [
+    {
+      "name": "azure",
+      "source": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/azure/azure-original.svg",
+      "sha256": "7923db83e3f9755bd412241a683fa996fb7a9d0259b5084de449e6be92f7ca20"
+    },
+    {
+      "name": "docker",
+      "source": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/docker/docker-original.svg",
+      "sha256": "3fd830ea69431ed7a0b8d068cd5b34ad3f00a1a78195d50f13ff56713f2462e1"
+    },
+    {
+      "name": "google",
+      "source": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/google/google-original.svg",
+      "sha256": "a8ec042934c876b60fb8120bddd526d4ef8b10b8a4ff89b881d427ed866275fb"
+    },
+    {
+      "name": "python",
+      "source": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/python/python-original.svg",
+      "sha256": "71493b4a732f0532b3a03a7a95da3ee11a65766367c8303b901ffbe7bf91a3a2"
+    },
+    {
+      "name": "redis",
+      "source": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/redis/redis-original.svg",
+      "sha256": "4707378b190878f36f7e6e1c01fa3ee7e7884c76101809d191dddd943a2e6bdb"
+    },
+    {
+      "name": "sqlite",
+      "source": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/sqlite/sqlite-original.svg",
+      "sha256": "2b91c30887d3602479ba845cc012ef6ae577fba71eb96705a05b12e35d2c5e7e"
+    },
+    {
+      "name": "streamlit",
+      "source": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/streamlit/streamlit-original.svg",
+      "sha256": "e6d3baa8583e9c812b228f4f507d8f386898d05a65ef787fe34b54435a6f4cea"
+    },
+    {
+      "name": "github",
+      "source": "https://raw.githubusercontent.com/devicons/devicon/7330accdbc47e2dc0c19789a48533c4a3c50fe58/icons/github/github-original.svg",
+      "sha256": "45262793de6292206a895ed63593cdb1eaed82074173f7f4b5bdb3e427ca805a"
+    }
+  ]
+}

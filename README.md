@@ -4,6 +4,16 @@ A chemistry document assistant with verified UCI sign-in, a student chat interfa
 and an administrator workspace for ingestion, document privacy, retrieval, evaluation
 and operations. The interface includes crystal artwork stored locally in the repository.
 
+## Documentation
+
+The [technical guide](docs/TECHNICAL_GUIDE.md) describes the implemented architecture,
+ingestion and question workflows, security controls, data retention, configuration,
+deployment, recovery and verification. A [PDF edition](docs/reference/DocuMind_Chemistry_Technical_Documentation.pdf)
+and [editable diagrams](docs/README.md) are included. Future scaling proposals are
+identified separately from current capabilities.
+
+![System architecture](docs/diagrams/system-architecture.png)
+
 ## Features
 
 - Hybrid retrieval: Pinecone dense search + SQLite FTS5/BM25 + reciprocal rank fusion.

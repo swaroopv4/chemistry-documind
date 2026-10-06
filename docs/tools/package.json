@@ -1,0 +1,11 @@
+{
+  "name": "documind-documentation-build",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "figures": "node build_diagrams.mjs"
+  },
+  "dependencies": {
+    "sharp": "0.35.4"
+  }
+}
