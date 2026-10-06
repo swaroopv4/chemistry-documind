@@ -1,0 +1,100 @@
+name: documind-campus
+x-log-options: &logs
+  driver: local
+  options:
+    max-size: "10m"
+    max-file: "3"
+x-runtime: &runtime
+  image: documind-campus:latest
+  env_file: ${DOCUMIND_CLOUD_ENV_FILE:-.env.cloud}
+  environment: &environment
+    REDIS_URL: redis://:${BROKER_REDIS_PASSWORD:?Set the broker password}@redis:6379/0
+    CELERY_BROKER_URL: redis://:${BROKER_REDIS_PASSWORD:?Set the broker password}@redis:6379/0
+    CELERY_RESULT_BACKEND: redis://:${BROKER_REDIS_PASSWORD:?Set the broker password}@redis:6379/1
+    ANSWER_CACHE_REDIS_URL: redis://:${CACHE_REDIS_PASSWORD:?Set the cache password}@cache:6379/0
+    DOCUMIND_UPLOAD_DIR: /app/.uploads
+    DOCUMIND_DATA_DIR: /app/data
+    DOCUMIND_LOCAL_ADMIN: "false"
+    DEPLOYMENT_ENV: production
+    OIDC_REDIRECT_URI: https://${APP_DOMAIN:?Set the public hostname}/oauth2callback
+    XDG_CACHE_HOME: /tmp/cache
+  volumes:
+    - ./.uploads:/app/.uploads
+    - ./data:/app/data
+  tmpfs:
+    - /tmp:rw,nosuid,size=256m
+    - /app/.streamlit:rw,nosuid,noexec,size=1m
+  read_only: true
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  pids_limit: 256
+  logging: *logs
+  restart: unless-stopped
+services:
+  proxy:
+    image: caddy:2-alpine
+    logging: *logs
+    environment:
+      APP_DOMAIN: ${APP_DOMAIN:?Set the public hostname}
+      TLS_EMAIL: ${TLS_EMAIL:?Set the TLS contact email}
+    ports: ["80:80", "443:443"]
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    depends_on: [app]
+    restart: unless-stopped
+    mem_limit: 256m
+  redis:
+    image: redis:8-alpine
+    logging: *logs
+    command: ["redis-server", "--appendonly", "yes", "--requirepass", "${BROKER_REDIS_PASSWORD:?Set the broker password}"]
+    environment:
+      REDISCLI_AUTH: ${BROKER_REDIS_PASSWORD:?Set the broker password}
+    volumes: ["redis-data:/data"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+    restart: unless-stopped
+    mem_limit: 512m
+  cache:
+    image: redis:8-alpine
+    logging: *logs
+    command: ["redis-server", "--maxmemory", "128mb", "--maxmemory-policy", "allkeys-lru", "--requirepass", "${CACHE_REDIS_PASSWORD:?Set the cache password}"]
+    environment:
+      REDISCLI_AUTH: ${CACHE_REDIS_PASSWORD:?Set the cache password}
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+    restart: unless-stopped
+    mem_limit: 256m
+  worker:
+    <<: *runtime
+    command: ["python", "-m", "celery", "-A", "phases.phase2_async.worker:celery_app", "worker", "--loglevel=INFO", "--concurrency=1"]
+    depends_on:
+      redis: {condition: service_healthy}
+    mem_limit: 3g
+    cpus: 1
+  app:
+    <<: *runtime
+    build: .
+    depends_on:
+      redis: {condition: service_healthy}
+      cache: {condition: service_healthy}
+      worker: {condition: service_started}
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8501/_stcore/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    mem_limit: 4g
+    cpus: 1.5
+volumes:
+  redis-data:
+  caddy-data:
+  caddy-config:

@@ -1,0 +1,11 @@
+.env
+.env.cloud
+.deployment
+.uploads
+data
+.venv
+.env-tools
+**/__pycache__
+*.zip
+tests
+.streamlit

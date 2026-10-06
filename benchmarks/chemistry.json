@@ -1,0 +1,229 @@
+{
+  "description": "Original educational fixture, including explicitly fictional reference measurements. Not uploaded-document ground truth.",
+  "cases": [
+    {
+      "id": "chem01",
+      "question": "What is the chemical formula of water?",
+      "passage": "Water has chemical formula H2O.",
+      "reference": "Water has chemical formula H2O.",
+      "expected_document": "chem01.txt"
+    },
+    {
+      "id": "chem02",
+      "question": "What is the chemical formula of carbon dioxide?",
+      "passage": "Carbon dioxide has chemical formula CO2.",
+      "reference": "Carbon dioxide has chemical formula CO2.",
+      "expected_document": "chem02.txt"
+    },
+    {
+      "id": "chem03",
+      "question": "What is the formula of methane?",
+      "passage": "Methane has molecular formula CH4.",
+      "reference": "Methane has molecular formula CH4.",
+      "expected_document": "chem03.txt"
+    },
+    {
+      "id": "chem04",
+      "question": "What is the molecular formula of ethanol?",
+      "passage": "Ethanol has molecular formula C2H6O.",
+      "reference": "Ethanol has molecular formula C2H6O.",
+      "expected_document": "chem04.txt"
+    },
+    {
+      "id": "chem05",
+      "question": "What is the formula of ammonia?",
+      "passage": "Ammonia has molecular formula NH3.",
+      "reference": "Ammonia has molecular formula NH3.",
+      "expected_document": "chem05.txt"
+    },
+    {
+      "id": "chem06",
+      "question": "What is the chemical formula of sodium chloride?",
+      "passage": "Sodium chloride has chemical formula NaCl.",
+      "reference": "Sodium chloride has chemical formula NaCl.",
+      "expected_document": "chem06.txt"
+    },
+    {
+      "id": "chem07",
+      "question": "What is the formula of sulfuric acid?",
+      "passage": "Sulfuric acid has chemical formula H2SO4.",
+      "reference": "Sulfuric acid has chemical formula H2SO4.",
+      "expected_document": "chem07.txt"
+    },
+    {
+      "id": "chem08",
+      "question": "What is the chemical formula of benzene?",
+      "passage": "Benzene has molecular formula C6H6.",
+      "reference": "Benzene has molecular formula C6H6.",
+      "expected_document": "chem08.txt"
+    },
+    {
+      "id": "chem09",
+      "question": "Which element has symbol Co?",
+      "passage": "Co is the element symbol for cobalt.",
+      "reference": "Co is the element symbol for cobalt.",
+      "expected_document": "chem09.txt"
+    },
+    {
+      "id": "chem10",
+      "question": "Which molecule has formula CO?",
+      "passage": "CO is the molecular formula for carbon monoxide.",
+      "reference": "CO is the molecular formula for carbon monoxide.",
+      "expected_document": "chem10.txt"
+    },
+    {
+      "id": "chem11",
+      "question": "What is the CAS identifier of water?",
+      "passage": "The CAS identifier of water is 7732-18-5.",
+      "reference": "The CAS identifier of water is 7732-18-5.",
+      "expected_document": "chem11.txt"
+    },
+    {
+      "id": "chem12",
+      "question": "What is the CAS identifier of ethanol?",
+      "passage": "The CAS identifier of ethanol is 64-17-5.",
+      "reference": "The CAS identifier of ethanol is 64-17-5.",
+      "expected_document": "chem12.txt"
+    },
+    {
+      "id": "chem13",
+      "question": "What is the pH of a neutral aqueous solution at 25 Celsius?",
+      "passage": "At 25 Celsius, a neutral aqueous solution has pH 7.",
+      "reference": "At 25 Celsius, a neutral aqueous solution has pH 7.",
+      "expected_document": "chem13.txt"
+    },
+    {
+      "id": "chem14",
+      "question": "What does a Brønsted acid donate?",
+      "passage": "A Brønsted acid donates a proton.",
+      "reference": "A Brønsted acid donates a proton.",
+      "expected_document": "chem14.txt"
+    },
+    {
+      "id": "chem15",
+      "question": "What does a Brønsted base accept?",
+      "passage": "A Brønsted base accepts a proton.",
+      "reference": "A Brønsted base accepts a proton.",
+      "expected_document": "chem15.txt"
+    },
+    {
+      "id": "chem16",
+      "question": "What does oxidation mean for electrons?",
+      "passage": "Oxidation means loss of electrons.",
+      "reference": "Oxidation means loss of electrons.",
+      "expected_document": "chem16.txt"
+    },
+    {
+      "id": "chem17",
+      "question": "What does reduction mean for electrons?",
+      "passage": "Reduction means gain of electrons.",
+      "reference": "Reduction means gain of electrons.",
+      "expected_document": "chem17.txt"
+    },
+    {
+      "id": "chem18",
+      "question": "What does a catalyst change in a reaction?",
+      "passage": "A catalyst changes the rate of a reaction without being consumed overall.",
+      "reference": "A catalyst changes the rate of a reaction without being consumed overall.",
+      "expected_document": "chem18.txt"
+    },
+    {
+      "id": "chem19",
+      "question": "What is the SI unit of amount of substance?",
+      "passage": "The SI unit of amount of substance is the mole.",
+      "reference": "The SI unit of amount of substance is the mole.",
+      "expected_document": "chem19.txt"
+    },
+    {
+      "id": "chem20",
+      "question": "What is Avogadro constant?",
+      "passage": "The Avogadro constant is exactly 6.02214076e23 per mole.",
+      "reference": "The Avogadro constant is exactly 6.02214076e23 per mole.",
+      "expected_document": "chem20.txt"
+    },
+    {
+      "id": "chem21",
+      "question": "What is molarity?",
+      "passage": "Molarity is amount of solute in moles divided by solution volume in liters.",
+      "reference": "Molarity is amount of solute in moles divided by solution volume in liters.",
+      "expected_document": "chem21.txt"
+    },
+    {
+      "id": "chem22",
+      "question": "What is molality?",
+      "passage": "Molality is amount of solute in moles divided by solvent mass in kilograms.",
+      "reference": "Molality is amount of solute in moles divided by solvent mass in kilograms.",
+      "expected_document": "chem22.txt"
+    },
+    {
+      "id": "chem23",
+      "question": "What is an isotope?",
+      "passage": "An isotope has the same atomic number but a different mass number from another isotope of the same element.",
+      "reference": "An isotope has the same atomic number but a different mass number from another isotope of the same element.",
+      "expected_document": "chem23.txt"
+    },
+    {
+      "id": "chem24",
+      "question": "What is an allotrope?",
+      "passage": "An allotrope is a different structural form of the same chemical element.",
+      "reference": "An allotrope is a different structural form of the same chemical element.",
+      "expected_document": "chem24.txt"
+    },
+    {
+      "id": "chem25",
+      "question": "What does an exothermic reaction release?",
+      "passage": "An exothermic reaction releases heat to its surroundings.",
+      "reference": "An exothermic reaction releases heat to its surroundings.",
+      "expected_document": "chem25.txt"
+    },
+    {
+      "id": "chem26",
+      "question": "What does an endothermic reaction absorb?",
+      "passage": "An endothermic reaction absorbs heat from its surroundings.",
+      "reference": "An endothermic reaction absorbs heat from its surroundings.",
+      "expected_document": "chem26.txt"
+    },
+    {
+      "id": "chem27",
+      "question": "What units are used for the crystal cell length in this reference?",
+      "passage": "In this reference, the crystal cell length is reported in angstroms.",
+      "reference": "In this reference, the crystal cell length is reported in angstroms.",
+      "expected_document": "chem27.txt"
+    },
+    {
+      "id": "chem28",
+      "question": "What crystal cell angle alpha is reported for the reference sample?",
+      "passage": "The reference sample has crystal cell angle alpha equal to 90 degrees.",
+      "reference": "The reference sample has crystal cell angle alpha equal to 90 degrees.",
+      "expected_document": "chem28.txt"
+    },
+    {
+      "id": "chem29",
+      "question": "What molecular mass is reported for the reference compound?",
+      "passage": "The reference compound has reported molecular mass 180.16 g/mol.",
+      "reference": "The reference compound has reported molecular mass 180.16 g/mol.",
+      "expected_document": "chem29.txt"
+    },
+    {
+      "id": "chem30",
+      "question": "What synthesis temperature is reported for the reference experiment?",
+      "passage": "The reference experiment has a reported synthesis temperature of 350 K.",
+      "reference": "The reference experiment has a reported synthesis temperature of 350 K.",
+      "expected_document": "chem30.txt"
+    },
+    {
+      "id": "chem31",
+      "question": "What yield is reported for the reference synthesis?",
+      "passage": "The reference synthesis has a reported yield of 82 percent.",
+      "reference": "The reference synthesis has a reported yield of 82 percent.",
+      "expected_document": "chem31.txt"
+    },
+    {
+      "id": "chem32",
+      "question": "What solvent is reported for the reference extraction?",
+      "passage": "The reference extraction uses ethyl acetate as the solvent.",
+      "reference": "The reference extraction uses ethyl acetate as the solvent.",
+      "expected_document": "chem32.txt"
+    }
+  ]
+}

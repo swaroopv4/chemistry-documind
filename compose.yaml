@@ -1,0 +1,72 @@
+name: documind-phase2
+services:
+  redis:
+    image: redis:8-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis-data:/data
+    ports:
+      - "127.0.0.1:6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 3s
+      timeout: 2s
+      retries: 20
+    restart: unless-stopped
+  worker:
+    image: documind-campus:latest
+    env_file: .env
+    environment:
+      REDIS_URL: redis://redis:6379/0
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/1
+      DOCUMIND_UPLOAD_DIR: /app/.uploads
+      DOCUMIND_DATA_DIR: /app/data
+      ANSWER_CACHE_REDIS_URL: redis://cache:6379/0
+    volumes:
+      - ./.uploads:/app/.uploads
+      - ./data:/app/data
+    command: ["python", "-m", "celery", "-A", "phases.phase2_async.worker:celery_app", "worker", "--loglevel=INFO", "--concurrency=1"]
+    depends_on:
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+  app:
+    build: .
+    image: documind-campus:latest
+    env_file: .env
+    environment:
+      REDIS_URL: redis://redis:6379/0
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/1
+      DOCUMIND_UPLOAD_DIR: /app/.uploads
+      DOCUMIND_DATA_DIR: /app/data
+      ANSWER_CACHE_REDIS_URL: redis://cache:6379/0
+      DOCUMIND_LOCAL_ADMIN: "true"
+      DEPLOYMENT_ENV: local
+    volumes:
+      - ./.uploads:/app/.uploads
+      - ./data:/app/data
+    ports:
+      - "127.0.0.1:8501:8501"
+    depends_on:
+      redis:
+        condition: service_healthy
+      worker:
+        condition: service_started
+      cache:
+        condition: service_healthy
+    restart: unless-stopped
+  cache:
+    image: redis:8-alpine
+    command: ["redis-server", "--maxmemory", "128mb", "--maxmemory-policy", "allkeys-lru"]
+    ports:
+      - "127.0.0.1:6380:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 3s
+      timeout: 2s
+      retries: 20
+    restart: unless-stopped
+volumes:
+  redis-data:
